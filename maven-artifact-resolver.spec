@@ -4,7 +4,7 @@
 
 Name:           %{?scl_prefix}%{pkg_name}
 Version:        1.0
-Release:        10.11%{?dist}
+Release:        10.12%{?dist}
 # Epoch is added because the original package's version in maven-shared is 1.1-SNAPSHOT
 Epoch:          1
 Summary:        Maven Artifact Resolution API
@@ -16,10 +16,10 @@ BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix_java_common}javapackages-tools
 BuildRequires:  %{?scl_prefix_java_common}maven-local
-BuildRequires:  maven30-plexus-containers-component-metadata
-BuildRequires:  maven30-maven-artifact-manager
-BuildRequires:  maven30-maven-project
-BuildRequires:  maven30-maven-shared
+BuildRequires:  %{?scl_prefix}plexus-containers-component-metadata
+BuildRequires:  %{?scl_prefix}maven-artifact-manager
+BuildRequires:  %{?scl_prefix}maven-project
+BuildRequires:  %{?scl_prefix}maven-shared
 
 
 %description
@@ -34,7 +34,7 @@ API documentation for %{pkg_name}.
 
 %prep
 %setup -q -n %{pkg_name}-%{version}
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 # use plexus-component-metadata instead of old plugin
 %pom_remove_plugin :plexus-maven-plugin
@@ -57,13 +57,13 @@ rm src/test/java/org/apache/maven/shared/artifact/resolver/DefaultProjectDepende
 %{?scl:EOF}
 
 %build
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_build
 %{?scl:EOF}
 
 %install
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_install
 %{?scl:EOF}
@@ -77,6 +77,9 @@ set -e -x
 %doc LICENSE NOTICE
 
 %changelog
+* Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 1:1.0-10.12
+- maven33 rebuild #2
+
 * Sat Jan 09 2016 Michal Srb <msrb@redhat.com> - 1:1.0-10.11
 - maven33 rebuild
 
