@@ -4,7 +4,7 @@
 
 Name:           %{?scl_prefix}%{pkg_name}
 Version:        1.0
-Release:        10.12%{?dist}
+Release:        10.13%{?dist}
 # Epoch is added because the original package's version in maven-shared is 1.1-SNAPSHOT
 Epoch:          1
 Summary:        Maven Artifact Resolution API
@@ -15,7 +15,7 @@ Source0:        http://central.maven.org/maven2/org/apache/maven/shared/%{pkg_na
 BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix_java_common}javapackages-tools
-BuildRequires:  %{?scl_prefix_java_common}maven-local
+BuildRequires:  %{?scl_prefix}maven-local
 BuildRequires:  %{?scl_prefix}plexus-containers-component-metadata
 BuildRequires:  %{?scl_prefix}maven-artifact-manager
 BuildRequires:  %{?scl_prefix}maven-project
@@ -77,6 +77,9 @@ set -e -x
 %doc LICENSE NOTICE
 
 %changelog
+* Mon Feb 08 2016 Michal Srb <msrb@redhat.com> - 1:1.0-10.13
+- Fix BR on maven-local & co.
+
 * Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 1:1.0-10.12
 - maven33 rebuild #2
 
