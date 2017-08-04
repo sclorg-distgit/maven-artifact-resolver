@@ -3,7 +3,7 @@
 
 Name:           %{?scl_prefix}maven-artifact-resolver
 Version:        1.0
-Release:        16.1%{?dist}
+Release:        16.2%{?dist}
 # Epoch is added because the original package's version in maven-shared is 1.1-SNAPSHOT
 Epoch:          1
 Summary:        Maven Artifact Resolution API
@@ -63,6 +63,9 @@ rm src/test/java/org/apache/maven/shared/artifact/resolver/DefaultProjectDepende
 %doc LICENSE NOTICE
 
 %changelog
+* Thu Jun 22 2017 Michael Simacek <msimacek@redhat.com> - 1:1.0-16.2
+- Mass rebuild 2017-06-22
+
 * Wed Jun 21 2017 Java Maintainers <java-maint@redhat.com> - 1:1.0-16.1
 - Automated package import and SCL-ization
 
